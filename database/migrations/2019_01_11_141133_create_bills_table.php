@@ -17,6 +17,7 @@ class CreateBillsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->double('payment');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }
