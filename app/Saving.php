@@ -4,17 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Bill extends Model
+class Saving extends Model
 {
     /**
-     *  The attributes that are mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'type', 'amount', 'payment', 'house_id'];
-    
+    protected $fillable = [
+        'name', 'payment'
+    ];
+
     /**
-     * Specifies Bill and House relation
+     * Specifies Saving relation to House
      *
      * @return void
      */
@@ -22,4 +24,5 @@ class Bill extends Model
     {
         $this->hasOne(App\House::class);
     }
+
 }

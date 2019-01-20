@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserIdToBillsTable extends Migration
+class AddHouseIdToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class AddUserIdToBillsTable extends Migration
      */
     public function up()
     {
-        Schema::table('bills', function (Blueprint $table) {
-            $table->foreign('user_id')
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('house_id')
                 ->references('id')
-                ->on('users')
+                ->on('houses')
                 ->onDelete('cascade');
         });
     }
@@ -28,8 +28,8 @@ class AddUserIdToBillsTable extends Migration
      */
     public function down()
     {
-        Schema::table('bills', function (Blueprint $table) {
-            $table->dropForeign('bills_user_id_foreign');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_house_id_foreign');
         });
     }
 }
