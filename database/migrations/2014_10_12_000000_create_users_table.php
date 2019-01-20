@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('role');
-            $table->unsignedInteger('house_id');
+            $table->unsignedInteger('house_id')->nullable();
             $table->timestamps();
         });
     }
