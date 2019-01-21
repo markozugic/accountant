@@ -12,7 +12,7 @@ class House extends Model
      * @var array
      */
     protected $fillable = [
-        'name'
+        'name', 'budget'
     ];
 
     /**
@@ -23,6 +23,16 @@ class House extends Model
     public function bills() 
     {
         $this->hasMany(App\Bill::class);
+    }
+
+    /**
+     * Specifies House relation to Expense
+     *
+     * @return void
+     */
+    public function expenses() 
+    {
+        $this->hasMany(App\Expense::class);
     }
 
     /**
