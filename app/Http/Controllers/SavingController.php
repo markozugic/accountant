@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Bill;
+use App\Saving;
 use Illuminate\Http\Request;
 
-class BillController extends Controller
+class SavingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class BillController extends Controller
      */
     public function index()
     {
-        return response('Bills', 200);
+        //
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -31,22 +31,22 @@ class BillController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Bill  $bill
+     * @param  \App\Saving  $saving
      * @return \Illuminate\Http\Response
      */
-    public function show(Bill $bill)
+    public function show(Saving $saving)
     {
         //
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Bill  $bill
+     * @param  \App\Saving  $saving
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bill $bill)
+    public function update(Request $request, Saving $saving)
     {
         //
     }
@@ -54,10 +54,10 @@ class BillController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Bill  $bill
+     * @param  \App\Saving  $saving
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bill $bill)
+    public function destroy(Saving $saving)
     {
         //
     }
