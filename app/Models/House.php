@@ -1,7 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\Bill;
+use App\Models\Saving;
+use App\Models\Expense;
+use App\Models\User\User;
 use Illuminate\Database\Eloquent\Model;
 
 class House extends Model
@@ -22,7 +26,7 @@ class House extends Model
      */
     public function bills() 
     {
-        $this->hasMany(App\Bill::class);
+        $this->hasMany(Bill::class);
     }
 
     /**
@@ -32,7 +36,7 @@ class House extends Model
      */
     public function expenses() 
     {
-        $this->hasMany(App\Expense::class);
+        $this->hasMany(Expense::class);
     }
 
     /**
@@ -42,7 +46,7 @@ class House extends Model
      */
     public function savings() 
     {
-        $this->hasMany(App\Saving::class);
+        $this->hasMany(Saving::class);
     }
 
     /**
@@ -50,9 +54,8 @@ class House extends Model
      *
      * @return void
      */
-    public function users() 
+    public function userProfiles() 
     {
-        $this->hasMany(App\User::class);
+        $this->hasMany(User::class);
     }
-
 }

@@ -1,9 +1,10 @@
 <?php
     
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\Auth;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterUserRequest;
@@ -42,13 +43,17 @@ class AuthController extends Controller
     {
         $credentials = $request->all();
 
-        return User::create([
+        $user = User::create([
             'name' => $credentials['name'],
             'email' => $credentials['email'],
             'username' => $credentials['username'],
             'password' => Hash::make($credentials['password']),
             'role' => User::MEMBER,
         ]);
+
+        $token = auth()->login($user);
+
+        return $this->respondWithToken($token);
     }
     
     /**

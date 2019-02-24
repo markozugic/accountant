@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBillsTable extends Migration
+class CreateUserProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,20 @@ class CreateBillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bills', function (Blueprint $table) {
+        Schema::create('user_profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('type');
-            $table->double('amount');
-            $table->double('payment');
-            $table->unsignedInteger('house_id');
+            $table->string('full_name');
+            $table->mediumText('description');
+            $table->date('date_of_birth');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('house_id')->nullable();
+
             $table->timestamps();
 
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('houses')
+                ->onDelete('cascade');
             $table->foreign('house_id')
                 ->references('id')
                 ->on('houses')
@@ -36,6 +41,6 @@ class CreateBillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bills');
+        Schema::dropIfExists('user_profiles');
     }
 }

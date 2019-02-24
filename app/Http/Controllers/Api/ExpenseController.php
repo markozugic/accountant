@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Saving;
+use App\Model\Expense;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class SavingController extends Controller
+class ExpenseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class SavingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Saving  $saving
+     * @param  \App\Expense  $expense
      * @return \Illuminate\Http\Response
      */
-    public function show(Saving $saving)
+    public function show(Expense $expense)
     {
         //
     }
@@ -43,10 +44,10 @@ class SavingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Saving  $saving
+     * @param  \App\Expense  $expense
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Saving $saving)
+    public function update(Request $request, Expense $expense)
     {
         //
     }
@@ -54,10 +55,10 @@ class SavingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Saving  $saving
+     * @param  \App\Expense  $expense
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Saving $saving)
+    public function destroy(Expense $expense)
     {
         //
     }

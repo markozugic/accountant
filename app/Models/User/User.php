@@ -1,12 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models\User;
 
+use App\Models\House;
+use App\Models\User\UserProfile;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
@@ -22,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password', 'role', 'house_id'
+        'username', 'email', 'password', 'role', 'house_id'
     ];
 
     /**
@@ -36,7 +39,12 @@ class User extends Authenticatable
     
     public function house()
     {
-        $this->hasOne(App\House::class);
+        $this->hasOne(House::class);
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class);
     }
     
     /**

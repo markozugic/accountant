@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\House;
+use App\Models\House;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\HouseResource;
 
 class HouseController extends Controller
 {
@@ -14,7 +16,7 @@ class HouseController extends Controller
      */
     public function index()
     {
-        return House::all();
+        
     }
 
     /**
@@ -36,7 +38,7 @@ class HouseController extends Controller
      */
     public function show(House $house)
     {
-        //
+        return HouseResource($house);
     }
 
     /**

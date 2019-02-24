@@ -19,6 +19,11 @@ class CreateSavingsTable extends Migration
             $table->double('payment');
             $table->unsignedInteger('house_id');
             $table->timestamps();
+
+            $table->foreign('house_id')
+                ->references('id')
+                ->on('houses')
+                ->onDelete('cascade');
         });
     }
 

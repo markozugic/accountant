@@ -19,6 +19,11 @@ class CreateExpensesTable extends Migration
             $table->double('amount');
             $table->unsignedInteger('house_id');
             $table->timestamps();
+
+            $table->foreign('house_id')
+                ->references('id')
+                ->on('houses')
+                ->onDelete('cascade');
         });
     }
 

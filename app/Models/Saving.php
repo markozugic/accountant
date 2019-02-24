@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\House;
 use Illuminate\Database\Eloquent\Model;
 
 class Saving extends Model
@@ -22,7 +23,7 @@ class Saving extends Model
      */
     public function house() 
     {
-        $this->hasOne(App\House::class);
+        $this->hasOne(House::class);
     }
 
 }
