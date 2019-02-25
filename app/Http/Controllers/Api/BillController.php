@@ -4,10 +4,18 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Bill;
 use Illuminate\Http\Request;
+use App\Services\BillService;
 use App\Http\Controllers\Controller;
 
 class BillController extends Controller
 {
+    private $billService;
+
+    public function __construct(BillService $billService)
+    {
+        $this->billService = $billService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,9 @@ class BillController extends Controller
      */
     public function index()
     {
-        return response('Bills', 200);
+        $bills = $this->billService->all();
+
+        return response($bills);
     }
     
     /**
@@ -26,7 +36,10 @@ class BillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validated();
+        $bill = $this->billService->store($data);
+
+        return response($bill);
     }
 
     /**
@@ -37,7 +50,7 @@ class BillController extends Controller
      */
     public function show(Bill $bill)
     {
-        //
+        return response($bill);
     }
     
     /**
@@ -49,7 +62,10 @@ class BillController extends Controller
      */
     public function update(Request $request, Bill $bill)
     {
-        //
+        $data = $request->validated();
+        $bill = $this->billService->update($bill, $data);
+
+        return response($bill);
     }
 
     /**
@@ -60,6 +76,6 @@ class BillController extends Controller
      */
     public function destroy(Bill $bill)
     {
-        //
+        return $this->billService->destroy($bill);
     }
 }

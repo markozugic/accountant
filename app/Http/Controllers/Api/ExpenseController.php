@@ -4,10 +4,18 @@ namespace App\Http\Controllers\Api;
 
 use App\Model\Expense;
 use Illuminate\Http\Request;
+use App\Services\ExpenseService;
 use App\Http\Controllers\Controller;
 
 class ExpenseController extends Controller
 {
+    private $expenseService;
+
+    public function __construct(ExpenseService $expenseService)
+    {
+        $this->expenseService = $expenseService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,9 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
+        $expenses = $this->expenseService->all();
+
+        return response($expense);
     }
 
     /**
@@ -26,7 +36,10 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validated();
+        $expense = $this->expenseService->store($data);
+
+        return response($expense);
     }
 
     /**
@@ -37,7 +50,7 @@ class ExpenseController extends Controller
      */
     public function show(Expense $expense)
     {
-        //
+        return response($expense);
     }
 
     /**
@@ -49,7 +62,10 @@ class ExpenseController extends Controller
      */
     public function update(Request $request, Expense $expense)
     {
-        //
+        $data = $request->validated();
+        $expense = $this->expenseService->update($expense, $data);
+
+        return response($expense);
     }
 
     /**
@@ -60,6 +76,6 @@ class ExpenseController extends Controller
      */
     public function destroy(Expense $expense)
     {
-        //
+        return $this->expenseService->destroy($expense);
     }
 }

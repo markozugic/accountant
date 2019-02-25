@@ -4,11 +4,18 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\House;
 use Illuminate\Http\Request;
+use App\Services\HouseService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\HouseResource;
 
 class HouseController extends Controller
 {
+    private $houseService;
+
+    public function __construct(HouseService $houseService) 
+    {
+        $this->houseService = $houseService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +23,9 @@ class HouseController extends Controller
      */
     public function index()
     {
-        
+        $houses = $this->houseService->all();
+
+        return response($houses);
     }
 
     /**
@@ -27,7 +36,10 @@ class HouseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validated();
+        $house = $this->houseService->store($data);
+
+        return response($data);
     }
 
     /**
@@ -38,7 +50,7 @@ class HouseController extends Controller
      */
     public function show(House $house)
     {
-        return HouseResource($house);
+        return response($house);
     }
 
     /**
@@ -50,7 +62,10 @@ class HouseController extends Controller
      */
     public function update(Request $request, House $house)
     {
-        //
+        $data = $request->validated();
+        $house = $this->houseService->update($house, $data);
+
+        return response($house);
     }
 
     /**
@@ -61,6 +76,6 @@ class HouseController extends Controller
      */
     public function destroy(House $house)
     {
-        //
+        return $this->houseService->destroy($house);
     }
 }

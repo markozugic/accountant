@@ -8,6 +8,12 @@ use App\Http\Controllers\Controller;
 
 class SavingController extends Controller
 {
+    private $savingService;
+
+    public function __construct(SavingService $savingService)
+    {
+        $this->savingService = $savingService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,9 @@ class SavingController extends Controller
      */
     public function index()
     {
-        //
+        $savings = $this->savingService->all();
+
+        return response($savings);
     }
 
     /**
@@ -26,7 +34,10 @@ class SavingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validated();
+        $saving = $this->savingService->store($data);
+
+        return response($saving);
     }
 
     /**
@@ -37,7 +48,7 @@ class SavingController extends Controller
      */
     public function show(Saving $saving)
     {
-        //
+        return response($saving);
     }
 
     /**
@@ -49,7 +60,10 @@ class SavingController extends Controller
      */
     public function update(Request $request, Saving $saving)
     {
-        //
+        $data = $request->validated();
+        $saving = $this->savingService->update($saving, $data);
+
+        return response($saving);
     }
 
     /**
@@ -60,6 +74,6 @@ class SavingController extends Controller
      */
     public function destroy(Saving $saving)
     {
-        //
+        return $this->savingService->destroy($saving);
     }
 }
