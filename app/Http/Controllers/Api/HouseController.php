@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\HouseService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\HouseResource;
+use App\Http\Requests\CreateHouseRequest;
 
 class HouseController extends Controller
 {
@@ -34,7 +35,7 @@ class HouseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateHouseRequest $request)
     {
         $data = $request->validated();
         $house = $this->houseService->store($data);
@@ -62,7 +63,7 @@ class HouseController extends Controller
      */
     public function update(Request $request, House $house)
     {
-        $data = $request->validated();
+        $data = $request->all();
         $house = $this->houseService->update($house, $data);
 
         return response($house);

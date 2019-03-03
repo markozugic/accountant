@@ -2,7 +2,7 @@
     
 namespace App\Http\Controllers\Api\Auth;
 
-use App\Models\User;
+use App\Models\User\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +44,6 @@ class AuthController extends Controller
         $credentials = $request->all();
 
         $user = User::create([
-            'name' => $credentials['name'],
             'email' => $credentials['email'],
             'username' => $credentials['username'],
             'password' => Hash::make($credentials['password']),

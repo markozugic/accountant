@@ -34,7 +34,7 @@ class SavingController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validated();
+        $data = $request->all();
         $saving = $this->savingService->store($data);
 
         return response($saving);
@@ -60,7 +60,7 @@ class SavingController extends Controller
      */
     public function update(Request $request, Saving $saving)
     {
-        $data = $request->validated();
+        $data = $request->all();
         $saving = $this->savingService->update($saving, $data);
 
         return response($saving);

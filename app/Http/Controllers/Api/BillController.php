@@ -36,7 +36,7 @@ class BillController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validated();
+        $data = $request->all();
         $bill = $this->billService->store($data);
 
         return response($bill);
@@ -62,7 +62,7 @@ class BillController extends Controller
      */
     public function update(Request $request, Bill $bill)
     {
-        $data = $request->validated();
+        $data = $request->all();
         $bill = $this->billService->update($bill, $data);
 
         return response($bill);

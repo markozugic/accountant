@@ -36,7 +36,7 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validated();
+        $data = $request->all();
         $expense = $this->expenseService->store($data);
 
         return response($expense);
@@ -62,7 +62,7 @@ class ExpenseController extends Controller
      */
     public function update(Request $request, Expense $expense)
     {
-        $data = $request->validated();
+        $data = $request->all();
         $expense = $this->expenseService->update($expense, $data);
 
         return response($expense);

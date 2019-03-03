@@ -28,7 +28,7 @@ Route::group(['namespace' => 'Api'], function () {
     });
 
     Route::group([
-        'middleware' => 'auth:api'
+        //'middleware' => 'auth:api'
     ], function () {
         Route::get('/bills', 'BillController@index');
         Route::get('/bills/{bill}', 'BillController@show');
