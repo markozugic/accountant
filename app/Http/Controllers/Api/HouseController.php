@@ -76,6 +76,9 @@ class HouseController extends Controller
      */
     public function destroy(House $house)
     {
-        return $this->houseService->destroy($house);
+        $this->houseService->destroy($house);
+
+        return response("Deleted", 200);
+
     }
 }

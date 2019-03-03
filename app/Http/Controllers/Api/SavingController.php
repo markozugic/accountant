@@ -74,6 +74,8 @@ class SavingController extends Controller
      */
     public function destroy(Saving $saving)
     {
-        return $this->savingService->destroy($saving);
+        $this->savingService->destroy($saving);
+
+        return response("Deleted", 200);
     }
 }

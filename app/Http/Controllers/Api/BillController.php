@@ -76,6 +76,8 @@ class BillController extends Controller
      */
     public function destroy(Bill $bill)
     {
-        return $this->billService->destroy($bill);
+        $this->billService->destroy($bill);
+
+        return response("Deleted", 200);
     }
 }

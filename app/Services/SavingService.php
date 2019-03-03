@@ -14,16 +14,12 @@ class SavingService
 
     public function store($data)
     {
-        return Saving::create([
-
-        ]);
+        return Saving::create($data);
     }
 
     public function update(Saving $saving, array $data)
     {
-        return $saving->update([
-
-        ]);
+        return $saving->update($data);
     }
 
     public function destroy($saving)

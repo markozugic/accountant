@@ -14,16 +14,12 @@ class ExpenseService
 
     public function store($data)
     {
-        return Expense::create([
-
-        ]);
+        return Expense::create($data);
     }
 
     public function update(Expense $expense, array $data)
     {
-        return $expense->update([
-
-        ]);
+        return $expense->update($data);
     }
 
     public function destroy($expense)

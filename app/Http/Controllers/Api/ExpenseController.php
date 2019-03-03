@@ -76,6 +76,8 @@ class ExpenseController extends Controller
      */
     public function destroy(Expense $expense)
     {
-        return $this->expenseService->destroy($expense);
+        $this->expenseService->destroy($expense);
+
+        return response("Deleted", 200);
     }
 }

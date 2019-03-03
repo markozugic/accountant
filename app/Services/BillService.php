@@ -14,16 +14,12 @@ class BillService
 
     public function store($data)
     {
-        return Bill::create([
-
-        ]);
+        return Bill::create($data);
     }
 
     public function update(Bill $bill, array $data)
     {
-        return $bill->update([
-
-        ]);
+        return $bill->update($data);
     }
 
     public function destroy($bill)

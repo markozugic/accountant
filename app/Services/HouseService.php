@@ -14,16 +14,12 @@ class HouseService
 
     public function store($data)
     {
-        return House::create([
-
-        ]);
+        return House::create($data);
     }
 
     public function update(House $house, array $data)
     {
-        return $house->update([
-
-        ]);
+        return $house->update($data);
     }
 
     public function destroy($house)
