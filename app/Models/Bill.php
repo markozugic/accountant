@@ -19,8 +19,8 @@ class Bill extends Model
      *
      * @return void
      */
-    public function house() 
+    public function house()
     {
-        $this->hasOne(House::class);
+        return $this->hasOne(House::class);
     }
 }

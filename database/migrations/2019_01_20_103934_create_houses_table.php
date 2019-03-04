@@ -16,7 +16,7 @@ class CreateHousesTable extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->double('budget');
+            $table->double('budget')->nullable();
             $table->timestamps();
         });
     }

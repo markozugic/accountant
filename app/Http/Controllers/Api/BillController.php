@@ -6,6 +6,10 @@ use App\Models\Bill;
 use Illuminate\Http\Request;
 use App\Services\BillService;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Bill\{
+    CreateBillRequest,
+    UpdateBillRequest
+};
 
 class BillController extends Controller
 {
@@ -34,7 +38,7 @@ class BillController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateBillRequest $request)
     {
         $data = $request->all();
         $bill = $this->billService->store($data);
@@ -60,7 +64,7 @@ class BillController extends Controller
      * @param  \App\Bill  $bill
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bill $bill)
+    public function update(UpdateBillRequest $request, Bill $bill)
     {
         $data = $request->all();
         $bill = $this->billService->update($bill, $data);

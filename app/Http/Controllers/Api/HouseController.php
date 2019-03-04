@@ -7,13 +7,16 @@ use Illuminate\Http\Request;
 use App\Services\HouseService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\HouseResource;
-use App\Http\Requests\CreateHouseRequest;
+use App\Http\Requests\House\{
+    CreateHouseRequest,
+    UpdateHouseRequest
+};
 
 class HouseController extends Controller
 {
     private $houseService;
 
-    public function __construct(HouseService $houseService) 
+    public function __construct(HouseService $houseService)
     {
         $this->houseService = $houseService;
     }
@@ -61,7 +64,7 @@ class HouseController extends Controller
      * @param  \App\House  $house
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, House $house)
+    public function update(UpdateHouseRequest $request, House $house)
     {
         $data = $request->all();
         $house = $this->houseService->update($house, $data);
@@ -80,6 +83,18 @@ class HouseController extends Controller
         $this->houseService->destroy($house);
 
         return response("Deleted", 200);
+    }
 
+    /**
+     * Display House with Bills
+     *
+     * @param  House
+     * @return $mixed
+     */
+    public function getHouseBills(House $house)
+    {
+        $houseWithBills = $this->houseService->getHouseBills($house);
+
+        return response($houseWithBills);
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateHouseRequest extends FormRequest
+class RegisterUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class CreateHouseRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,8 +24,10 @@ class CreateHouseRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required|max:20",
-            "budget" => "required"
+            'email' => 'required|email|unique:users',
+            'username' => 'required|max:50',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required|min:6|max:20|same:password',
         ];
     }
 }

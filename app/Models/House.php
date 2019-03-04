@@ -24,9 +24,9 @@ class House extends Model
      *
      * @return void
      */
-    public function bills() 
+    public function bills()
     {
-        $this->hasMany(Bill::class);
+        return $this->hasMany(Bill::class);
     }
 
     /**
@@ -34,9 +34,9 @@ class House extends Model
      *
      * @return void
      */
-    public function expenses() 
+    public function expenses()
     {
-        $this->hasMany(Expense::class);
+        return $this->hasMany(Expense::class);
     }
 
     /**
@@ -44,9 +44,9 @@ class House extends Model
      *
      * @return void
      */
-    public function savings() 
+    public function savings()
     {
-        $this->hasMany(Saving::class);
+        return $this->hasMany(Saving::class);
     }
 
     /**
@@ -54,8 +54,8 @@ class House extends Model
      *
      * @return void
      */
-    public function userProfiles() 
+    public function userProfiles()
     {
-        $this->hasMany(User::class);
+        return $this->hasMany(User::class);
     }
 }

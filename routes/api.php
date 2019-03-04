@@ -26,7 +26,6 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('me', 'AuthController@me');
         
     });
-
     Route::group([
         //'middleware' => 'auth:api'
     ], function () {
@@ -41,6 +40,8 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('/houses', 'HouseController@store');
         Route::put('/houses/{house}', 'HouseController@update');
         Route::delete('/houses/{house}', 'HouseController@destroy');
+        Route::get('/houses/{house}/bills', 'HouseController@getHouseBills');
+
     
         Route::get('/expenses', 'ExpenseController@index');
         Route::get('/expenses/{expense}', 'ExpenseController@show');
