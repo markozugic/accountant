@@ -26,8 +26,8 @@ class UpdateBillRequest extends FormRequest
         return [
             'name' => 'required|max:20',
             'type' => 'required|max:20',
-            'amount' => 'required|numeric|max:10',
-            'payment' => 'sometimes|numeric|max:10',
+            'amount' => 'required|numeric|digits:10',
+            'payment' => 'sometimes|numeric|digits:10',
         ];
     }
 }
