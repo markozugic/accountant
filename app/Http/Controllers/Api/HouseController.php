@@ -97,4 +97,17 @@ class HouseController extends Controller
 
         return response($houseWithBills);
     }
+
+    /**
+     * Display House with Expense
+     *
+     * @param  House
+     * @return $mixed
+     */
+    public function getHouseExpenses($id)
+    {
+        $houseWithExpenses = $this->houseService->getHouseExpenses($id);
+
+        return response($houseWithExpenses);
+    }
 }

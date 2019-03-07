@@ -50,4 +50,15 @@ class HouseService
     {
         return House::where('id', $houseId)->with('bills')->get();
     }
+
+    /**
+     * Eager load Expenses with House
+     *
+     * @param  int House id
+     * @return Illuminate\Support\Collection
+     */
+    public function getHouseExpenses($houseId)
+    {
+        return House::where('id', $houseId)->with('expenses')->get();
+    }
 }

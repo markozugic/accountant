@@ -40,7 +40,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::put('/houses/{house}', 'HouseController@update');
         Route::delete('/houses/{house}', 'HouseController@destroy');
         Route::get('/houses/{id}/bills', 'HouseController@getHouseBills');
-
+        Route::get('/houses/{id}/expenses', 'HouseController@getHouseExpenses');
     
         Route::get('/expenses', 'ExpenseController@index');
         Route::get('/expenses/{expense}', 'ExpenseController@show');
