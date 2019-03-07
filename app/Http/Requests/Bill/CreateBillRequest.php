@@ -26,7 +26,7 @@ class CreateBillRequest extends FormRequest
         return [
             'name' => 'required|max:20',
             'type' => 'required|max:20',
-            'amount' => 'required|numeric|digits:10',
+            'amount' => 'required|regex:/^\d*(\.\d{2})?$/',
             'house_id' => 'required|integer'
         ];
     }

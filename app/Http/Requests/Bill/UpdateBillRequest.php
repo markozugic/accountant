@@ -26,8 +26,8 @@ class UpdateBillRequest extends FormRequest
         return [
             'name' => 'required|max:20',
             'type' => 'required|max:20',
-            'amount' => 'required|numeric|digits:10',
-            'payment' => 'sometimes|numeric|digits:10',
+            'amount' => 'required|regex:/^\d*(\.\d{2})?$/',
+            'payment' => 'sometimes|regex:/^\d*(\.\d{2})?$/',
         ];
     }
 }
