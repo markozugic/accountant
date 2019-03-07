@@ -91,9 +91,9 @@ class HouseController extends Controller
      * @param  House
      * @return $mixed
      */
-    public function getHouseBills(House $house)
+    public function getHouseBills($id)
     {
-        $houseWithBills = $this->houseService->getHouseBills($house);
+        $houseWithBills = $this->houseService->getHouseBills($id);
 
         return response($houseWithBills);
     }

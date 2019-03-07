@@ -24,7 +24,6 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('logout', 'AuthController@logout');
         Route::post('refresh', 'AuthController@refresh');
         Route::post('me', 'AuthController@me');
-        
     });
     Route::group([
         //'middleware' => 'auth:api'
@@ -40,7 +39,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('/houses', 'HouseController@store');
         Route::put('/houses/{house}', 'HouseController@update');
         Route::delete('/houses/{house}', 'HouseController@destroy');
-        Route::get('/houses/{house}/bills', 'HouseController@getHouseBills');
+        Route::get('/houses/{id}/bills', 'HouseController@getHouseBills');
 
     
         Route::get('/expenses', 'ExpenseController@index');
@@ -56,13 +55,3 @@ Route::group(['namespace' => 'Api'], function () {
         Route::delete('/savings/{saving}', 'SavingController@destroy');
     });
 });
-
-
-
-
-
-
-
-
-
-

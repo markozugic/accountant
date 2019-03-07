@@ -25,7 +25,7 @@ class UpdateHouseRequest extends FormRequest
     {
         return [
             'name' => 'required|max:20',
-            'budget' => 'required|numeric|between:0,99.99'
+            'budget' => 'required|numeric|max:10'
         ];
     }
 }

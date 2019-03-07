@@ -6,7 +6,6 @@ use App\Models\House;
 
 class HouseService
 {
-
     /**
      * @return House collection
      */
@@ -44,11 +43,11 @@ class HouseService
     /**
      * Eager load Bills with House
      *
-     * @param  House
-     * @return $mixed
+     * @param  int House id
+     * @return Illuminate\Support\Collection
      */
-    public function getHouseBills(House $house)
+    public function getHouseBills($houseId)
     {
-        return $house->with('bills')->get();
+        return House::where('id', $houseId)->with('bills')->get();
     }
 }
