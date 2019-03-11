@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Bill;
+namespace App\Http\Requests\ExpenseType;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateBillRequest extends FormRequest
+class CreateExpenseTypeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class CreateBillRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:20',
             'type' => 'required|max:20',
-            'amount' => 'required|regex:/^\d*(\.\d{2})?$/',
             'house_id' => 'required|integer'
         ];
     }

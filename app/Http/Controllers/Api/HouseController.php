@@ -66,7 +66,7 @@ class HouseController extends Controller
      */
     public function update(UpdateHouseRequest $request, House $house)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $house = $this->houseService->update($house, $data);
 
         return response($house);
@@ -83,19 +83,6 @@ class HouseController extends Controller
         $this->houseService->destroy($house);
 
         return response("Deleted", 200);
-    }
-
-    /**
-     * Display House with Bills
-     *
-     * @param  House
-     * @return $mixed
-     */
-    public function getHouseBills($id)
-    {
-        $houseWithBills = $this->houseService->getHouseBills($id);
-
-        return response($houseWithBills);
     }
 
     /**

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Model\Expense;
-use Illuminate\Http\Request;
-use App\Services\ExpenseService;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Expense\CreateExpenseRequest;
+use App\Http\Requests\Expense\UpdateExpenseRequest;
+use App\Model\Expense;
+use App\Services\ExpenseService;
+use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
@@ -34,9 +36,9 @@ class ExpenseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateExpenseRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $expense = $this->expenseService->store($data);
 
         return response($expense);
@@ -60,12 +62,12 @@ class ExpenseController extends Controller
      * @param  \App\Expense  $expense
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Expense $expense)
+    public function update(UpdateExpenseRequest $request, Expense $expense)
     {
-        $data = $request->all();
-        $expense = $this->expenseService->update($expense, $data);
+        $data = $request->validated();
+        $updatedExpense = $this->expenseService->update($expense, $data);
 
-        return response($expense);
+        return response($updatedExpense);
     }
 
     /**

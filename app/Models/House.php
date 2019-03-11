@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Bill;
-use App\Models\Saving;
-use App\Models\Expense;
+use App\Models\ExpenseType;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,42 +18,12 @@ class House extends Model
     ];
 
     /**
-     * Specifies House relation to Bill
-     *
-     * @return void
-     */
-    public function bills()
-    {
-        return $this->hasMany(Bill::class);
-    }
-
-    /**
      * Specifies House relation to Expense
      *
      * @return void
      */
-    public function expenses()
+    public function expenseTypes()
     {
-        return $this->hasMany(Expense::class);
-    }
-
-    /**
-     * Specifies House relation to Saving
-     *
-     * @return void
-     */
-    public function savings()
-    {
-        return $this->hasMany(Saving::class);
-    }
-
-    /**
-     * Specifies House relation to User
-     *
-     * @return void
-     */
-    public function userProfiles()
-    {
-        return $this->hasMany(User::class);
+        return $this->hasMany(ExpenseType::class);
     }
 }

@@ -59,6 +59,6 @@ class HouseService
      */
     public function getHouseExpenses($houseId)
     {
-        return House::where('id', $houseId)->with('expenses')->get();
+        return House::where('id', $houseId)->with('expenseTypes.expenses')->get();
     }
 }

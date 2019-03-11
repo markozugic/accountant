@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\House;
+namespace App\Http\Requests\Expense;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateHouseRequest extends FormRequest
+class CreateExpenseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,9 @@ class UpdateHouseRequest extends FormRequest
     {
         return [
             'name' => 'required|max:20',
-            'budget' => 'required|regex:/^\d*(\.\d{2})?$/'
+            'amount' => 'required|regex:/^\d*(\.\d{2})?$/',
+            'house_id' => 'required|integer',
+            'expense_type_id' => 'required|integer'
         ];
     }
 }

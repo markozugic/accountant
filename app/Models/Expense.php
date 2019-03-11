@@ -2,22 +2,21 @@
 
 namespace App\Models;
 
+use App\Models\ExpenseType;
 use App\Models\House;
 use Illuminate\Database\Eloquent\Model;
 
 class Expense extends Model
 {
-    protected $fillable = [
-        'name', 'amount'
-    ];
+    protected $guarded = ['id'];
 
-        /**
-     * Specifies Expense relation to House
+    /**
+     * Specifies Expense relation to ExpenseType
      *
      * @return void
      */
-    public function house()
+    public function type()
     {
-        return $this->hasOne(House::class);
+        return $this->belongsTo(ExpenseType::class);
     }
 }
