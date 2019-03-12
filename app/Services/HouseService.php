@@ -41,14 +41,14 @@ class HouseService
     }
 
     /**
-     * Eager load Bills with House
+     * Eager load ExpenseTypes with House
      *
      * @param  int House id
      * @return Illuminate\Support\Collection
      */
-    public function getHouseBills($houseId)
+    public function getHouseExpenseTypes($houseId)
     {
-        return House::where('id', $houseId)->with('bills')->get();
+        return House::where('id', $houseId)->with('expenseTypes')->get();
     }
 
     /**

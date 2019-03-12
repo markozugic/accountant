@@ -3,7 +3,6 @@
 namespace App\Models\User;
 
 use App\Models\House;
-use App\Models\User\UserProfile;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -36,17 +35,12 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password'
     ];
-    
+
     public function house()
     {
         $this->hasOne(House::class);
     }
 
-    public function profile()
-    {
-        return $this->hasOne(UserProfile::class);
-    }
-    
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
@@ -56,7 +50,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->getKey();
     }
-    
+
     /**
      * Return a key value array, containing any custom claims to be added to the JWT.
      *

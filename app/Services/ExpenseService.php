@@ -19,7 +19,9 @@ class ExpenseService
 
     public function update(Expense $expense, array $data)
     {
-        return $expense->update($data);
+        $expense->update($data);
+
+        return $expense;
     }
 
     public function destroy($expense)

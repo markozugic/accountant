@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExpensesTypesTable extends Migration
+class CreateExpenseTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateExpensesTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('expenses_types', function (Blueprint $table) {
+        Schema::create('expense_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type');
             $table->unsignedInteger('house_id');
@@ -33,6 +33,6 @@ class CreateExpensesTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('expenses_types');
+        Schema::dropIfExists('expense_types');
     }
 }

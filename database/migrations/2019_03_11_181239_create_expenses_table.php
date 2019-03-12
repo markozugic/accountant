@@ -23,7 +23,7 @@ class CreateExpensesTable extends Migration
 
             $table->foreign('expense_type_id')
                 ->references('id')
-                ->on('expenses_types')
+                ->on('expense_types')
                 ->onDelete('cascade');
         });
     }
