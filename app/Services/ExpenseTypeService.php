@@ -18,7 +18,9 @@ class ExpenseTypeService
 
     public function update(ExpenseType $expenseType, array $data)
     {
-        return $expenseType->update($data);
+        $expenseType->update($data);
+
+        return $expenseType;
     }
 
     public function destroy($expenseType)

@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ExpenseType\CreateExpenseTypeRequest;
-use App\Http\Requests\ExpenseType\UpdateExpenseTypeRequest;
 use App\Models\ExpenseType;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\ExpenseTypeService;
+use App\Http\Requests\ExpenseType\CreateExpenseTypeRequest;
+use App\Http\Requests\ExpenseType\UpdateExpenseTypeRequest;
 
 class ExpenseTypeController extends Controller
 {
     private $expenseTypeService;
 
-    public function __construct(ExpenseType $expenseTypeService)
+    public function __construct(ExpenseTypeService $expenseTypeService)
     {
         $this->expenseTypeService = $expenseTypeService;
     }
@@ -50,7 +51,7 @@ class ExpenseTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(UpdateExpenseTypeRequest $expenseType)
+    public function show(ExpenseType $expenseType)
     {
         return $expenseType;
     }
@@ -62,10 +63,10 @@ class ExpenseTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ExpenseType $expenseType)
+    public function update(UpdateExpenseTypeRequest $request, ExpenseType $expenseType)
     {
         $data = $request->validated();
-        $updatedExpenseType = $this->expenseTypeService->update($expense, $data);
+        $updatedExpenseType = $this->expenseTypeService->update($expenseType, $data);
 
         return response($updatedExpenseType);
     }
@@ -76,9 +77,9 @@ class ExpenseTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ExpenseType $expenseType)
     {
-        $this->expenseTypeService->destroy($expense);
+        $this->expenseTypeService->destroy($expenseType);
 
         return response("Deleted", 200);
     }

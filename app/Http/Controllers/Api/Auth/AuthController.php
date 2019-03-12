@@ -1,5 +1,5 @@
 <?php
-    
+
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Models\User\User;
@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\RegisterUserRequest;
+use App\Http\Requests\User\RegisterUserRequest;
 
 class AuthController extends Controller
 {
@@ -20,7 +20,7 @@ class AuthController extends Controller
     {
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
-    
+
     /**
      * Get a JWT token via given credentials.
      *
@@ -31,15 +31,15 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        
+
         if ($token = $this->guard()->attempt($credentials)) {
             return $this->respondWithToken($token);
         }
-        
+
         return response()->json(['error' => 'Unauthorized'], 401);
     }
 
-    public function register(RegisterUserRequest $request) 
+    public function register(RegisterUserRequest $request)
     {
         $credentials = $request->all();
 
@@ -54,7 +54,7 @@ class AuthController extends Controller
 
         return $this->respondWithToken($token);
     }
-    
+
     /**
      * Get the authenticated User
      *
@@ -64,7 +64,7 @@ class AuthController extends Controller
     {
         return response()->json($this->guard()->user());
     }
-    
+
     /**
      * Log the user out (Invalidate the token)
      *
@@ -73,10 +73,10 @@ class AuthController extends Controller
     public function logout()
     {
         $this->guard()->logout();
-        
+
         return response()->json(['message' => 'Successfully logged out']);
     }
-    
+
     /**
      * Refresh a token.
      *
@@ -86,7 +86,7 @@ class AuthController extends Controller
     {
         return $this->respondWithToken($this->guard()->refresh());
     }
-    
+
     /**
      * Get the token array structure.
      *
@@ -102,7 +102,7 @@ class AuthController extends Controller
             'expires_in' => $this->guard()->factory()->getTTL() * 60
         ]);
     }
-    
+
     /**
      * Get the guard to be used during authentication.
      *

@@ -33,7 +33,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('/houses', 'HouseController@store');
         Route::put('/houses/{house}', 'HouseController@update');
         Route::delete('/houses/{house}', 'HouseController@destroy');
-        Route::get('/houses/{id}/bills', 'HouseController@getHouseBills');
+        Route::get('/houses/{id}/expense-types', 'HouseController@getHouseExpenseTypes');
         Route::get('/houses/{id}/expenses', 'HouseController@getHouseExpenses');
 
         Route::get('/expenses', 'ExpenseController@index');
@@ -42,10 +42,10 @@ Route::group(['namespace' => 'Api'], function () {
         Route::put('/expenses/{expense}', 'ExpenseController@update');
         Route::delete('/expenses/{expense}', 'ExpenseController@destroy');
 
-        Route::get('/expenses-types', 'ExpenseTypeController@index');
-        Route::get('/expenses-types/{expenseType}', 'ExpenseTypeController@show');
-        Route::post('/expenses-types', 'ExpenseTypeController@store');
-        Route::put('/expenses-types/{expenseType}', 'ExpenseTypeController@update');
-        Route::delete('/expenses-types/{expenseType}', 'ExpenseTypeController@destroy');
+        Route::get('/expense-types', 'ExpenseTypeController@index');
+        Route::get('/expense-types/{expenseType}', 'ExpenseTypeController@show');
+        Route::post('/expense-types', 'ExpenseTypeController@store');
+        Route::put('/expense-types/{expenseType}', 'ExpenseTypeController@update');
+        Route::delete('/expense-types/{expenseType}', 'ExpenseTypeController@destroy');
     });
 });
