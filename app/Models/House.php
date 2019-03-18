@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\ExpenseType;
-use App\Models\User\User;
 use Illuminate\Database\Eloquent\Model;
 
 class House extends Model

@@ -95,7 +95,7 @@ class HouseController extends Controller
     {
         $houseWithExpenseTypes = $this->houseService->getHouseExpenseTypes($id);
 
-        return response($houseWithExpenses);
+        return response($houseWithExpenseTypes);
     }
 
     /**
