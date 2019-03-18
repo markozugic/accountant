@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\Expense;
 
-class ExpenseService 
+class ExpenseService
 {
 
     public function all()

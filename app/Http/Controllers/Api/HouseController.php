@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\House;
-use Illuminate\Http\Request;
 use App\Services\HouseService;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\HouseResource;
 use App\Http\Requests\House\{
     CreateHouseRequest,
     UpdateHouseRequest
@@ -43,7 +41,7 @@ class HouseController extends Controller
         $data = $request->validated();
         $house = $this->houseService->store($data);
 
-        return response($data);
+        return response($house);
     }
 
     /**
@@ -95,7 +93,7 @@ class HouseController extends Controller
     {
         $houseWithExpenseTypes = $this->houseService->getHouseExpenseTypes($id);
 
-        return response($houseWithExpenses);
+        return response($houseWithExpenseTypes);
     }
 
     /**
